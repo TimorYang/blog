@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="阅读本篇文章，您需要具备 Linux，Git，Nginx 等相关的知识。  Hexo Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。  hexo安装安装前提 Node.js npm hexo官方文档 本地服务器（Mac, Windows等） 远程服务器 域名  安装Hexo打开终端(Mac)或者命">
+<meta name="keywords" content="hexo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo博客搭建">
+<meta property="og:url" content="https://www.timoryang.io/2018/08/10/Hexo博客搭建/index.html">
+<meta property="og:site_name" content="你好，世界">
+<meta property="og:description" content="阅读本篇文章，您需要具备 Linux，Git，Nginx 等相关的知识。  Hexo Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。  hexo安装安装前提 Node.js npm hexo官方文档 本地服务器（Mac, Windows等） 远程服务器 域名  安装Hexo打开终端(Mac)或者命">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-08-11T03:03:10.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo博客搭建">
+<meta name="twitter:description" content="阅读本篇文章，您需要具备 Linux，Git，Nginx 等相关的知识。  Hexo Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。  hexo安装安装前提 Node.js npm hexo官方文档 本地服务器（Mac, Windows等） 远程服务器 域名  安装Hexo打开终端(Mac)或者命">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>Hexo博客搭建</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/projects_url">Github</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" href="/2018/08/07/hello-world/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://www.timoryang.io/2018/08/10/Hexo博客搭建/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://www.timoryang.io/2018/08/10/Hexo博客搭建/&text=Hexo博客搭建"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://www.timoryang.io/2018/08/10/Hexo博客搭建/&title=Hexo博客搭建"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.timoryang.io/2018/08/10/Hexo博客搭建/&is_video=false&description=Hexo博客搭建"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Hexo博客搭建&body=Check out this article: https://www.timoryang.io/2018/08/10/Hexo博客搭建/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://www.timoryang.io/2018/08/10/Hexo博客搭建/&title=Hexo博客搭建"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://www.timoryang.io/2018/08/10/Hexo博客搭建/&title=Hexo博客搭建"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://www.timoryang.io/2018/08/10/Hexo博客搭建/&title=Hexo博客搭建"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://www.timoryang.io/2018/08/10/Hexo博客搭建/&title=Hexo博客搭建"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://www.timoryang.io/2018/08/10/Hexo博客搭建/&name=Hexo博客搭建&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Hexo"><span class="toc-number">1.</span> <span class="toc-text">Hexo</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#hexo安装"><span class="toc-number">1.1.</span> <span class="toc-text">hexo安装</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#安装前提"><span class="toc-number">1.1.1.</span> <span class="toc-text">安装前提</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#安装Hexo"><span class="toc-number">1.1.2.</span> <span class="toc-text">安装Hexo</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#建站"><span class="toc-number">1.1.3.</span> <span class="toc-text">建站</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#hexo-主题配置"><span class="toc-number">1.2.</span> <span class="toc-text">hexo 主题配置</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#替换主题"><span class="toc-number">1.2.1.</span> <span class="toc-text">替换主题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#主题配置"><span class="toc-number">1.2.2.</span> <span class="toc-text">主题配置</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#远程服务器"><span class="toc-number">2.</span> <span class="toc-text">远程服务器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#HTTPS"><span class="toc-number">2.1.</span> <span class="toc-text">HTTPS</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Let’s-Encrypt"><span class="toc-number">2.1.1.</span> <span class="toc-text">Let’s Encrypt</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#nginx"><span class="toc-number">3.</span> <span class="toc-text">nginx</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#server配置"><span class="toc-number">3.1.</span> <span class="toc-text">server配置</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#git服务器搭建-大坑待更"><span class="toc-number">4.</span> <span class="toc-text">git服务器搭建 (大坑待更)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Blog部署"><span class="toc-number">5.</span> <span class="toc-text">Blog部署</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Hexo博客搭建
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">你好，世界</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2018-08-10T09:09:43.000Z" itemprop="datePublished">2018-08-10</time>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/hexo/">hexo</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <blockquote>
+<p>阅读本篇文章，您需要具备 Linux，Git，Nginx 等相关的知识。</p>
+</blockquote>
+<h2 id="Hexo"><a href="#Hexo" class="headerlink" title="Hexo"></a>Hexo</h2><blockquote>
+<p>Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。</p>
+</blockquote>
+<h3 id="hexo安装"><a href="#hexo安装" class="headerlink" title="hexo安装"></a>hexo安装</h3><h4 id="安装前提"><a href="#安装前提" class="headerlink" title="安装前提"></a>安装前提</h4><ul>
+<li><a href="https://nodejs.org/en/" target="_blank" rel="noopener">Node.js</a></li>
+<li><a href="https://www.npmjs.com/get-npm" target="_blank" rel="noopener">npm</a></li>
+<li><a href="https://hexo.io/zh-cn/docs/" target="_blank" rel="noopener">hexo官方文档</a></li>
+<li>本地服务器（Mac, Windows等）</li>
+<li>远程服务器</li>
+<li>域名</li>
+</ul>
+<h4 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h4><p>打开终端(Mac)或者命令行(Windows)<br>执行命令: <code>npm install -g hexo-cli</code><br>等待命令执行结束，<mark>Hexo</mark>就安装完成了。</p>
+<h4 id="建站"><a href="#建站" class="headerlink" title="建站"></a>建站</h4><ol>
+<li><p>指定博客存放的路径</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 需要替换成自己电脑的文件目录</span></span><br><span class="line"><span class="built_in">cd</span> /User/timoryang/Docment/</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>一键生成Hexo</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo init &lt;folder&gt;</span><br><span class="line"><span class="built_in">cd</span> &lt;folder&gt;</span><br><span class="line">npm install</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Hexo文件结构</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">├── _config.yml</span><br><span class="line">├── package.json</span><br><span class="line">├── scaffolds</span><br><span class="line">├── <span class="built_in">source</span></span><br><span class="line">|   ├── _drafts</span><br><span class="line">|   └── _posts</span><br><span class="line">└── themes</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Hexo<a href="https://hexo.io/zh-cn/docs/configuration" target="_blank" rel="noopener">配置</a>文件：<mark>_config.yml</mark></p>
+</li>
+<li>至此，Hexo安装结束，执行以下命令，便可以在浏览器中看到Hexo默认的页面(需要在刚刚生成博客的根目录下执行如下命令)。<ol>
+<li>生成静态文件：<code>hexo generate</code></li>
+<li>启动本地服务器： <code>hexo server</code></li>
+<li>打开<a href="http://localhost:4000" target="_blank" rel="noopener">http://localhost:4000</a></li>
+</ol>
+</li>
+</ol>
+<h3 id="hexo-主题配置"><a href="#hexo-主题配置" class="headerlink" title="hexo 主题配置"></a>hexo 主题配置</h3><blockquote>
+<p>看到 Hexo 默认的页面后，如果您不太喜欢默认的 Theme，您可以通过谷歌或者百度来寻找中意的Hexo Theme，这里我提供了一份 <a href="https://www.github.com" target="_blank" rel="noopener">Github</a> 上的 <a href="https://github.com/topics/hexo-theme" target="_blank" rel="noopener">Theme</a> 清单。</p>
+</blockquote>
+<h4 id="替换主题"><a href="#替换主题" class="headerlink" title="替换主题"></a>替换主题</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># 打开_config.yml (注意这里是博客根目录下面的_config.yml 不是 Theme 根目录下的_config.yml)</span><br><span class="line"># theme: landscape</span><br><span class="line">theme: cactus</span><br></pre></td></tr></table></figure>
+<h4 id="主题配置"><a href="#主题配置" class="headerlink" title="主题配置"></a>主题配置</h4><p>关于主题配置，具体详见您选中 Theme 的Readme或者使用文档，本文不作介绍。</p>
+<h2 id="远程服务器"><a href="#远程服务器" class="headerlink" title="远程服务器"></a>远程服务器</h2><blockquote>
+<p>前面介绍了如何在本地安装和部署 Hexo ，接下来我们需要将 Hexo 生成的静态页面上传到远程服务器上，以供网友们浏览。</p>
+</blockquote>
+<p>讲到这里我们还是先谈谈 HTTPS吧。</p>
+<h3 id="HTTPS"><a href="#HTTPS" class="headerlink" title="HTTPS"></a>HTTPS</h3><blockquote>
+<p>超文本传输安全协议（英语：Hypertext Transfer Protocol Secure，缩写：HTTPS，常称为HTTP over TLS，HTTP over SSL或HTTP Secure）是一种透过计算机网络进行安全通信的传输协议。</p>
+</blockquote>
+<p><mark>Apple、Google 一直在推进 https, 同时为了避免我们站点遇到流量劫持，建议大家建站的时候配置下 htps。</mark></p>
+<h4 id="Let’s-Encrypt"><a href="#Let’s-Encrypt" class="headerlink" title="Let’s Encrypt"></a><a href="https://letsencrypt.org" target="_blank" rel="noopener">Let’s Encrypt</a></h4><blockquote>
+<p>Let’s Encrypt由互联网安全研究小组（缩写ISRG）提供服务。主要赞助商包括电子前哨基金会、Mozilla基金会、Akamai以及思科。2015年4月9日，ISRG与Linux基金会宣布合作。<br>用以实现新的数字证书认证机构的协议被称为自动证书管理环境（ACME）。GitHub上有这一规范的草案，且提案的一个版本已作为一个Internet草案发布。<br>Let’s Encrypt宣称这一过程将十分简单、自动化并且免费。</p>
+</blockquote>
+<p>这里我们将使用 <a href="https://github.com" target="_blank" rel="noopener">Github</a> 上的开源项目 <a href="https://github.com/Neilpang/acme.sh" target="_blank" rel="noopener">acme.sh</a> 完成 https 证书的申请，验证和自动续签。</p>
+<ol>
+<li>安装  </li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 登陆到远程服务器</span></span><br><span class="line">curl  https://get.acme.sh | sh</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>生成证书 &amp; 验证证书<blockquote>
+<p>acme.sh 实现了 acme 协议支持的所有验证协议。 一般有两种方式验证: http 和 dns 验证。<br> 这里笔者只介绍 http 验证，dns验证没有试过，就不发表意见了。</p>
+</blockquote>
+</li>
+</ol>
+<html><br><ol type="i"><br><li>准备好您申请的域名</li><br><li>执行命令：<code>acme.sh  --issue  -d mydomain.com -d www.mydomain.com  --webroot  /home/wwwroot/mydomain.com/</code><br>    若该命令执行中产生错误，在刚刚执行的命令后面加上 <code>--debug</code><br>    查看错误信息，并根据错误进行修改。</li><br><li><font color="red" size="2">注意，如果之前服务器配置过 Nginx 建议还原 nginx 配置，笔者当时就是因为这个问题被卡住了，证书一直验证不成功。提示：<mark>Verify error:Invalid response from [domain]</mark>所以要保证 80 端口不要被占用，证书验证的时候会访问当前服务器的 80 端口，如果请求成功，颁发证书的机构接收到返回，就会下发证书。</font></li><br></ol><br></html>
+
+
+<ol start="4">
+<li><p>安装证书</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 执行如下命令， 如果出现 nginx.serviceJob for nginx.service failed 这种错误，</span></span><br><span class="line"><span class="comment"># 先执行 systemctl status nginx.service 查看具体错误。</span></span><br><span class="line"><span class="comment"># 笔者当时遇到了 nginx: [emerg] bind() to 0.0.0.0:80 failed (98: Address already in use) 这种错误，</span></span><br><span class="line"><span class="comment"># 表示此时 80 端口 被占用了，所以笔者建议在使用 acme.sh 申请证书的时候，</span></span><br><span class="line"><span class="comment"># 先把 nginx 自定义的配置全部注释了，只保留默认配置，这样在申请证书时基本不会遇到什么问题。</span></span><br><span class="line"><span class="comment"># 这里可能涉及到 Nginx 相关的知识，笔者会在下文中简单介绍一下</span></span><br><span class="line"></span><br><span class="line">acme.sh  --installcert  -d  &lt;domain&gt;.com   \</span><br><span class="line">    --key-file   /etc/nginx/ssl/&lt;domain&gt;.key \</span><br><span class="line">    --fullchain-file /etc/nginx/ssl/fullchain.cer \</span><br><span class="line">    --reloadcmd  <span class="string">"service nginx force-reload"</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>自动更新证书</p>
+</li>
+</ol>
+<p><mark>acme.sh 会自动为你创建 cronjob, 每天 0:00 点自动检测所有的证书, 如果快过期了, 需要更新, 则会自动更新证书.</mark></p>
+<ol start="6">
+<li><p>生成DH秘钥</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 换成自己服务器上准备保存证书的路径</span></span><br><span class="line">openssl dhparam 2048 -out /etc/nginx/ssl/dhparam.pem</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>nginx ssl 配置 ( 笔者对这块不是很了解，只能先占坑了qaq )</p>
+ <figure class="highlight bash"><figcaption><span>hl_lines</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># certs sent to the client in SERVER HELLO are concatenated in ssl_certificate</span></span><br><span class="line">ssl_certificate /etc/nginx/ssl/fullchain.cer;</span><br><span class="line">ssl_certificate_key /etc/nginx/ssl/imzhengfei.com.key;</span><br><span class="line">ssl_session_timeout 1d;</span><br><span class="line">ssl_session_cache shared:SSL:50m;</span><br><span class="line">ssl_session_tickets off;</span><br><span class="line"></span><br><span class="line"><span class="comment"># Diffie-Hellman parameter for DHE ciphersuites, recommended 2048 bits</span></span><br><span class="line">ssl_dhparam /etc/nginx/ssl/dhparam.pem;</span><br><span class="line"></span><br><span class="line"><span class="comment"># intermediate configuration. tweak to your needs.</span></span><br><span class="line">ssl_protocols TLSv1 TLSv1.1 TLSv1.2;</span><br><span class="line">ssl_ciphers <span class="string">'ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA256:ECDHE-ECDSA-AES128-SHA:ECDHE-RSA-AES256-SHA384:ECDHE-RSA-AES128-SHA:ECDHE-ECDSA-AES256-SHA384:ECDHE-ECDSA-AES256-SHA:ECDHE-RSA-AES256-SHA:DHE-RSA-AES128-SHA256:DHE-RSA-AES128-SHA:DHE-RSA-AES256-SHA256:DHE-RSA-AES256-SHA:ECDHE-ECDSA-DES-CBC3-SHA:ECDHE-RSA-DES-CBC3-SHA:EDH-RSA-DES-CBC3-SHA:AES128-GCM-SHA256:AES256-GCM-SHA384:AES128-SHA256:AES256-SHA256:AES128-SHA:AES256-SHA:DES-CBC3-SHA:!DSS'</span>;</span><br><span class="line">ssl_ecdh_curve secp384r1;</span><br><span class="line">ssl_prefer_server_ciphers on;</span><br><span class="line"></span><br><span class="line"><span class="comment"># fetch OCSP records from URL in ssl_certificate and cache them</span></span><br><span class="line">ssl_stapling on;</span><br><span class="line">ssl_stapling_verify on;</span><br><span class="line">resolver 223.5.5.5 223.6.6.6 114.114.114.114 8.8.8.8 8.8.4.4 valid=300s;</span><br><span class="line">resolver_timeout 10s;</span><br><span class="line"></span><br><span class="line"><span class="comment"># HSTS (ngx_http_headers_module is required) (31536000 seconds ≈ 1 year)</span></span><br><span class="line">add_header Strict-Transport-Security <span class="string">'max-age=31536000; includeSubdomains; preload'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment"># only allow frames form same origin</span></span><br><span class="line">add_header X-Frame-Options SAMEORIGIN;</span><br><span class="line"></span><br><span class="line"><span class="comment"># no MIME-sniffing for Content-Type</span></span><br><span class="line">add_header X-Content-Type-Options nosniff;</span><br><span class="line"></span><br><span class="line"><span class="comment"># hide nginx version</span></span><br><span class="line">server_tokens off;</span><br></pre></td></tr></table></figure>
+<p> <mark>注意</mark></p>
+<p> <code>ssl_certificate</code> ，<code>ssl_certificate_key</code> ， <code>ssl_dhparam</code> 换成自己文件的路径。</p>
+</li>
+</ol>
+<h2 id="nginx"><a href="#nginx" class="headerlink" title="nginx"></a>nginx</h2><blockquote>
+<p>笔者在申请 https 证书的时候，被 nginx 的配置坑了不少，当时申请 vps 时，懒癌晚期，随手配置了下nginx 没有做任何记录，导致隔了5个月再来碰这些东西，完全抓虾😂。</p>
+</blockquote>
+<p>那就具体谈谈笔者当时遇到的一些问题</p>
+<ul>
+<li><p><mark>Verify error:Invalid response from yourdomain.com</mark></p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># yourdomian.com 泛指您申请的域名</span><br><span class="line"># 这个错误是在申请 https 证书时抛出来的，提示服务器没有响应，谷歌了一上午，没有找到解决方案。</span><br><span class="line"># 因为笔者当时通过浏览器访问 yourdomain.com 是可以显示服务器部署的网页的，笔者就觉得服务器不可能没有返回，</span><br><span class="line"># 后来笔者去看 acme.sh 的文档，提示证书验证的时候回去访问临时生成的目录。笔者就想是不是应为指定了nginx访问的路径</span><br><span class="line"># 导致证书验证的时候无法访问到临时生成的那个文件。所以笔者就注释了除默认以为的配置，果然重新执行命令，就证书就验证成功了。</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><mark>nginx: [emerg] bind() to 0.0.0.0:80 failed (98: Address already in use)</mark></p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># 该错误提示端口被占用，其实这个问题还是笔者前面说到的，在申请整个证书过程中，最好只使用 nginx 默认的配置，自定义的配置暂时都注释掉。</span><br><span class="line"># 执行 sudo netstat -tulpn 查看端口</span><br><span class="line"># 执行 sudo kill -2 &lt;PID&gt; 或者 kill -9 &lt;PID&gt;</span><br><span class="line"># 执行 nginx -s -stop</span><br><span class="line"># 执行 nginx (最好执行以下此命令，不然可能会报 [error] open() &quot;/run/nginx.pid&quot; failed (2: No such file or directory) )</span><br><span class="line"># 执行 nginx -s -reload</span><br><span class="line"># 重新执行证书安装的命令</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><strong>针对 Nginx 配置的一些建议</strong></p>
+<p>在 <code>/etc/nginx/nginx.conf</code> 中默认包含了 <code>/etc/nginx/conf.d/*.conf</code> 和 <code>/etc/nginx/sites-enabled/*</code>，而 <code>/etc/nginx/sites-enabled/*</code> 默认包含了 <code>/etc/nginx/sites-available/</code>, 所以我们在配置站点时，最好在 <code>/etc/nginx/sites-available/</code><br>建立新的站点配置文件，然后 link 到 <code>/etc/nginx/sites-enabled/*</code>。</p>
+<p><mark>link 命令</mark></p>
+<p><code>sudo ln -s /etc/nginx/sites-available/xxx /etc/nginx/sites-enabled/xxx</code></p>
+<h3 id="server配置"><a href="#server配置" class="headerlink" title="server配置"></a>server配置</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># yourdomain.com</span></span><br><span class="line">server &#123;</span><br><span class="line">  listen 80;</span><br><span class="line">  server_name yourdomain.com;</span><br><span class="line">  <span class="built_in">return</span> 301 https://<span class="variable">$http_host</span><span class="variable">$request_uri</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># https for yourdomain.com</span></span><br><span class="line">server &#123;</span><br><span class="line">  listen 443;</span><br><span class="line">  ssl on;</span><br><span class="line">  server_name yourdomain.com;</span><br><span class="line">  root /home/wwwroot/yourdomain.com; <span class="comment"># 这个路径设置成需要访问的路径</span></span><br><span class="line">  index index.html;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><mark>注意</mark></p>
+<p>以上是一个简单的静态页面代理配置实例，http 将被永久重定向到 https，根据需要修改成自己的配置。</p>
+<h2 id="git服务器搭建-大坑待更"><a href="#git服务器搭建-大坑待更" class="headerlink" title="git服务器搭建 (大坑待更)"></a>git服务器搭建 (大坑待更)</h2><h2 id="Blog部署"><a href="#Blog部署" class="headerlink" title="Blog部署"></a>Blog部署</h2>
+  </div>
+</article>
+
+
+
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/projects_url">Github</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Hexo"><span class="toc-number">1.</span> <span class="toc-text">Hexo</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#hexo安装"><span class="toc-number">1.1.</span> <span class="toc-text">hexo安装</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#安装前提"><span class="toc-number">1.1.1.</span> <span class="toc-text">安装前提</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#安装Hexo"><span class="toc-number">1.1.2.</span> <span class="toc-text">安装Hexo</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#建站"><span class="toc-number">1.1.3.</span> <span class="toc-text">建站</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#hexo-主题配置"><span class="toc-number">1.2.</span> <span class="toc-text">hexo 主题配置</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#替换主题"><span class="toc-number">1.2.1.</span> <span class="toc-text">替换主题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#主题配置"><span class="toc-number">1.2.2.</span> <span class="toc-text">主题配置</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#远程服务器"><span class="toc-number">2.</span> <span class="toc-text">远程服务器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#HTTPS"><span class="toc-number">2.1.</span> <span class="toc-text">HTTPS</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Let’s-Encrypt"><span class="toc-number">2.1.1.</span> <span class="toc-text">Let’s Encrypt</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#nginx"><span class="toc-number">3.</span> <span class="toc-text">nginx</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#server配置"><span class="toc-number">3.1.</span> <span class="toc-text">server配置</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#git服务器搭建-大坑待更"><span class="toc-number">4.</span> <span class="toc-text">git服务器搭建 (大坑待更)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Blog部署"><span class="toc-number">5.</span> <span class="toc-text">Blog部署</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://www.timoryang.io/2018/08/10/Hexo博客搭建/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://www.timoryang.io/2018/08/10/Hexo博客搭建/&text=Hexo博客搭建"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://www.timoryang.io/2018/08/10/Hexo博客搭建/&title=Hexo博客搭建"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.timoryang.io/2018/08/10/Hexo博客搭建/&is_video=false&description=Hexo博客搭建"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Hexo博客搭建&body=Check out this article: https://www.timoryang.io/2018/08/10/Hexo博客搭建/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://www.timoryang.io/2018/08/10/Hexo博客搭建/&title=Hexo博客搭建"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://www.timoryang.io/2018/08/10/Hexo博客搭建/&title=Hexo博客搭建"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://www.timoryang.io/2018/08/10/Hexo博客搭建/&title=Hexo博客搭建"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://www.timoryang.io/2018/08/10/Hexo博客搭建/&title=Hexo博客搭建"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://www.timoryang.io/2018/08/10/Hexo博客搭建/&name=Hexo博客搭建&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2018 TimorYang
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/projects_url">Github</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
+<!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+<!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
